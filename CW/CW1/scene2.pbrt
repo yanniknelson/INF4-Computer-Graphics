@@ -1,0 +1,169 @@
+Film "image" "integer xresolution" [4032] "integer yresolution" [3024] "string filename" "Scene00001.exr"
+PixelFilter "box" "float xwidth" [0.5] "float ywidth" [0.5] 
+Accelerator "bvh" 
+"string splitmethod" "sah"
+"integer maxnodeprims" [4]
+Sampler "halton"
+"integer pixelsamples" [100]
+"bool samplepixelcenter" "false"
+Integrator "path"
+"integer maxdepth" [10]
+Scale -1 1 1 #avoid the 'flipped image' bug..
+LookAt	0.18799999356269836 -0.7680000066757202 0.9559999704360962
+	0.18799999356269836 0.14554548263549805 0.5492633581161499
+	0.0 0.4067366123199463 0.9135454893112183
+
+Camera "perspective"
+"float fov" [56.43764487108807]
+WorldBegin
+
+	AttributeBegin
+		Translate	0.4662487804889679 0.6282430291175842 1.4299999475479126
+		LightSource "point"
+"rgb I" [0.0 0.0 0.0]
+	AttributeEnd
+	
+
+	AttributeBegin
+		Transform [-0.000000 0.000000 -0.240000 0.000000 0.000000 0.195000 0.000000 0.000000 1.000000 0.000000 -0.000000 0.000000 0.000000 0.195000 0.240000 1.000000 ]
+		
+		Texture "Book Texture.exr" "color" "imagemap" "string filename" ["textures/Book Texture.exr"]		
+		Material "matte"		
+		"float sigma" [0.0]		
+		"texture Kd" "Book Texture.exr"		
+		Shape "trianglemesh"
+		"point P" [
+		-1.0 -1.0 0.0 1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 1.0 0.0		
+		]
+		"normal N" [
+		0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0		
+		]
+		"float st" [
+		0.9999100565910339 8.999017882160842e-05 
+		0.9999100565910339 0.8088616728782654 
+		8.992366201709956e-05 0.8088616728782654 
+		0.9999100565910339 8.999017882160842e-05 
+		8.992366201709956e-05 0.8088616728782654 
+		8.996736141853034e-05 8.992365474114195e-05 
+		]
+		"integer indices" [
+		0 1 2 3 4 5 
+		]
+	AttributeEnd
+	
+
+	AttributeBegin
+		Transform [-0.000000 0.000000 -0.068000 0.000000 0.143329 0.192501 0.000000 0.000000 0.802088 -0.597205 -0.000000 0.000000 0.188000 0.000000 0.068000 1.000000 ]
+		
+		Texture "BoxTexture.exr" "color" "imagemap" "string filename" ["textures/BoxTexture.exr"]		
+		Material "matte"		
+		"float sigma" [0.0]		
+		"texture Kd" "BoxTexture.exr"		
+		Shape "trianglemesh"
+		"point P" [
+		-1.0 0.0 0.0 1.0 0.0 0.0 1.0 2.0 0.0 -1.0 0.0 0.0 1.0 2.0 0.0 -1.0 2.0 0.0		
+		]
+		"normal N" [
+		0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0		
+		]
+		"float st" [
+		0.0 0.0 
+		1.0 0.0 
+		1.0 1.0 
+		0.0 0.0 
+		1.0 1.0 
+		0.0 1.0 
+		]
+		"integer indices" [
+		0 1 2 3 4 5 
+		]
+	AttributeEnd
+	
+
+	AttributeBegin
+		Transform [1.000000 0.000000 0.000000 0.000000 0.000000 0.042000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 -0.500000 0.420000 0.776000 1.000000 ]
+		Material "matte"		
+		"float sigma" [0.0]		
+		"color Kd" [ 0.3654651343822479 0.3654651343822479 0.3654651343822479]		
+		Shape "trianglemesh"
+		"point P" [
+		-1.0 -1.0 0.0 1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 1.0 0.0		
+		]
+		"normal N" [
+		0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0		
+		]
+		"float st" [
+		0.0 0.0 
+		1.0 0.0 
+		1.0 1.0 
+		0.0 0.0 
+		1.0 1.0 
+		0.0 1.0 
+		]
+		"integer indices" [
+		0 1 2 3 4 5 
+		]
+	AttributeEnd
+	
+
+	AttributeBegin
+		Transform [-0.504422 1.777931 0.000000 0.000000 -1.777931 -0.504422 0.000000 0.000000 0.000000 0.000000 1.848102 0.000000 0.424897 0.000000 0.000000 1.000000 ]
+		
+		Texture "Floor Texture.exr" "color" "imagemap" "string filename" ["textures/Floor Texture.exr"]		
+		Material "matte"		
+		"float sigma" [0.0]		
+		"texture Kd" "Floor Texture.exr"		
+		Shape "trianglemesh"
+		"point P" [
+		-1.0 -1.0 0.0 1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 1.0 0.0		
+		]
+		"normal N" [
+		0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0		
+		]
+		"float st" [
+		0.4861129820346832 6.982601917115971e-05 
+		0.4861129820346832 0.9999303221702576 
+		6.971194670768455e-05 0.999930202960968 
+		0.4861129820346832 6.982601917115971e-05 
+		6.971194670768455e-05 0.999930202960968 
+		6.973319977987558e-05 6.971195398364216e-05 
+		]
+		"integer indices" [
+		0 1 2 3 4 5 
+		]
+	AttributeEnd
+	
+
+	AttributeBegin
+		Transform [-0.106140 0.000000 0.000000 0.000000 0.000000 -0.106140 0.000000 0.000000 0.000000 0.000000 -0.106140 0.000000 0.127745 0.244912 0.103313 1.000000 ]
+		Material "mirror"		
+		"color Kr" [ 0.800000011920929 0.800000011920929 0.800000011920929]		
+		Shape "plymesh" "string filename" ["meshes/00001/Icosphere_mat0.ply"]
+	AttributeEnd
+	
+
+	AttributeBegin
+		Transform [0.015216 0.000000 0.000000 0.000000 0.000000 0.015216 0.000000 0.000000 0.000000 0.000000 0.015216 0.000000 0.470650 0.622819 1.426202 1.000000 ]
+		AreaLightSource "diffuse" "blackbody L" [5500 		10]		
+		Shape "trianglemesh"
+		"point P" [
+		-1.0 -1.0 0.0 1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 1.0 0.0		
+		]
+		"normal N" [
+		0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0		
+		]
+		"float st" [
+		0.0 0.0 
+		1.0 0.0 
+		1.0 1.0 
+		0.0 0.0 
+		1.0 1.0 
+		0.0 1.0 
+		]
+		"integer indices" [
+		0 1 2 3 4 5 
+		]
+	AttributeEnd
+	
+
+WorldEnd
