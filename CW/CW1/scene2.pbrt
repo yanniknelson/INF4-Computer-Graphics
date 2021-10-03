@@ -1,4 +1,4 @@
-Film "image" "integer xresolution" [4032] "integer yresolution" [3024] "string filename" "Scene00001.exr"
+Film "image" "integer xresolution" [4032] "integer yresolution" [3024] "string filename" "Scene200001.exr"
 PixelFilter "box" "float xwidth" [0.5] "float ywidth" [0.5] 
 Accelerator "bvh" 
 "string splitmethod" "sah"
@@ -10,11 +10,11 @@ Integrator "path"
 "integer maxdepth" [10]
 Scale -1 1 1 #avoid the 'flipped image' bug..
 LookAt	0.18799999356269836 -0.7680000066757202 0.9559999704360962
-	0.18799999356269836 0.14554548263549805 0.5492633581161499
-	0.0 0.4067366123199463 0.9135454893112183
+	0.2007759064435959 0.14554548263549805 0.5494640469551086
+	-0.028695158660411835 0.4067366123199463 0.913094699382782
 
 Camera "perspective"
-"float fov" [56.43764487108807]
+"float fov" [77.0]
 WorldBegin
 
 	AttributeBegin
@@ -25,7 +25,7 @@ WorldBegin
 	
 
 	AttributeBegin
-		Transform [-0.000000 0.000000 -0.240000 0.000000 0.000000 0.195000 0.000000 0.000000 1.000000 0.000000 -0.000000 0.000000 0.000000 0.195000 0.240000 1.000000 ]
+		Transform [-0.000000 -0.000000 -0.240000 0.000000 -0.012923 0.194571 0.000000 0.000000 0.997801 0.066274 -0.000000 0.000000 -0.007727 -0.007727 0.000000 1.000000 ]
 		
 		Texture "Book Texture.exr" "color" "imagemap" "string filename" ["textures/Book Texture.exr"]		
 		Material "matte"		
@@ -33,7 +33,7 @@ WorldBegin
 		"texture Kd" "Book Texture.exr"		
 		Shape "trianglemesh"
 		"point P" [
-		-1.0 -1.0 0.0 1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 1.0 0.0		
+		-2.0 0.0 0.0 5.960464477539063e-08 0.0 0.0 5.960464477539063e-08 2.0 0.0 -2.0 0.0 0.0 5.960464477539063e-08 2.0 0.0 -2.0 2.0 0.0		
 		]
 		"normal N" [
 		0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0		
@@ -135,7 +135,7 @@ WorldBegin
 	
 
 	AttributeBegin
-		Transform [-0.106140 0.000000 0.000000 0.000000 0.000000 -0.106140 0.000000 0.000000 0.000000 0.000000 -0.106140 0.000000 0.127745 0.244912 0.103313 1.000000 ]
+		Transform [-0.106140 0.000000 0.000000 0.000000 0.000000 -0.106140 0.000000 0.000000 0.000000 0.000000 -0.106140 0.000000 0.190243 0.291210 0.103313 1.000000 ]
 		Material "mirror"		
 		"color Kr" [ 0.800000011920929 0.800000011920929 0.800000011920929]		
 		Shape "plymesh" "string filename" ["meshes/00001/Icosphere_mat0.ply"]
@@ -143,8 +143,8 @@ WorldBegin
 	
 
 	AttributeBegin
-		Transform [0.015216 0.000000 0.000000 0.000000 0.000000 0.015216 0.000000 0.000000 0.000000 0.000000 0.015216 0.000000 0.470650 0.622819 1.426202 1.000000 ]
-		AreaLightSource "diffuse" "blackbody L" [5500 		10]		
+		Transform [-0.015216 0.000000 0.000000 0.000000 0.000000 0.015216 0.000000 0.000000 -0.000000 0.000000 -0.015216 0.000000 0.438687 0.622819 1.426202 1.000000 ]
+		AreaLightSource "diffuse" "blackbody L" [5500 		10000]		
 		Shape "trianglemesh"
 		"point P" [
 		-1.0 -1.0 0.0 1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 1.0 0.0		
