@@ -1,0 +1,154 @@
+Film "image" "integer xresolution" [2160] "integer yresolution" [2160] "string filename" "ahhhhhhh00001.exr"
+PixelFilter "box" "float xwidth" [0.5] "float ywidth" [0.5] 
+Accelerator "bvh" 
+"string splitmethod" "sah"
+"integer maxnodeprims" [4]
+Sampler "halton"
+"integer pixelsamples" [100]
+"bool samplepixelcenter" "false"
+Integrator "path"
+"integer maxdepth" [10]
+Scale -1 1 1 #avoid the 'flipped image' bug..
+LookAt	-0.07599999755620956 -0.8399999737739563 0.8399999737739563
+	-0.07599999755620956 0.08156532049179077 0.45177653431892395
+	0.0 0.38822343945503235 0.9215652942657471
+
+Camera "perspective"
+"float fov" [60]
+WorldBegin
+
+	AttributeBegin
+		Translate	0.5400000214576721 0.28600001335144043 1.6100000143051147
+		LightSource "point"
+"rgb I" [10.0 10.0 10.0]
+	AttributeEnd
+	
+
+	AttributeBegin
+		Transform [-17.498308 0.000000 0.000000 0.000000 0.000000 -17.498308 0.000000 0.000000 0.000000 0.000000 -17.498308 0.000000 0.000000 0.000000 0.000000 1.000000 ]
+		Material "matte"		
+		"float sigma" [0.0]		
+		"color Kd" [ 0.800000011920929 0.800000011920929 0.800000011920929]		
+		Shape "trianglemesh"
+		"point P" [
+		-1.0 -1.0 0.0 1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 1.0 0.0		
+		]
+		"normal N" [
+		0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0		
+		]
+		"float st" [
+		0.0 0.0 
+		1.0 0.0 
+		1.0 1.0 
+		0.0 0.0 
+		1.0 1.0 
+		0.0 1.0 
+		]
+		"integer indices" [
+		0 1 2 3 4 5 
+		]
+	AttributeEnd
+	
+
+	AttributeBegin
+		Transform [0.000000 0.000000 -0.068000 0.000000 -0.168218 0.171180 -0.000000 0.000000 0.713250 0.700909 0.000000 0.000000 0.000000 0.000000 0.068000 1.000000 ]
+		
+		Texture "BoxTexture.exr" "color" "imagemap" "string filename" ["textures/BoxTexture.exr"]		
+		Material "matte"		
+		"float sigma" [0.0]		
+		"texture Kd" "BoxTexture.exr"		
+		Shape "trianglemesh"
+		"point P" [
+		-1.0 0.0 -2.220446049250313e-16 1.0 0.0 -2.220446049250313e-16 1.0 2.0 -2.220446049250313e-16 -1.0 0.0 -2.220446049250313e-16 1.0 2.0 -2.220446049250313e-16 -1.0 2.0 -2.220446049250313e-16		
+		]
+		"normal N" [
+		0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0		
+		]
+		"float st" [
+		0.0 0.0 
+		1.0 0.0 
+		1.0 1.0 
+		0.0 0.0 
+		1.0 1.0 
+		0.0 1.0 
+		]
+		"integer indices" [
+		0 1 2 3 4 5 
+		]
+	AttributeEnd
+	
+
+	AttributeBegin
+		Transform [-0.000000 0.000000 -0.204000 0.000000 0.000000 0.134000 0.000000 0.000000 1.000000 0.000000 -0.000000 0.000000 -0.420000 0.135684 0.204000 1.000000 ]
+		
+		Texture "book2.exr" "color" "imagemap" "string filename" ["textures/book2.exr"]		
+		Material "matte"		
+		"float sigma" [0.0]		
+		"texture Kd" "book2.exr"		
+		Shape "trianglemesh"
+		"point P" [
+		-1.0 -1.0 0.0 1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 1.0 0.0		
+		]
+		"normal N" [
+		0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0		
+		]
+		"float st" [
+		8.147954940795898e-05 0.9989025592803955 
+		8.115172386169434e-05 8.127191540552303e-05 
+		0.9999187588691711 8.117366814985871e-05 
+		8.147954940795898e-05 0.9989025592803955 
+		0.9999187588691711 8.117366814985871e-05 
+		0.9999189376831055 0.998902440071106 
+		]
+		"integer indices" [
+		0 1 2 3 4 5 
+		]
+	AttributeEnd
+	
+
+	AttributeBegin
+		Transform [0.571471 0.149923 0.151804 0.000000 -0.007613 0.029018 0.000000 0.000000 -0.240713 -0.063150 0.968540 0.000000 -0.488387 -0.000153 0.408000 1.000000 ]
+		Material "matte"		
+		"float sigma" [0.0]		
+		"color Kd" [ 0.371207058429718 0.011307917535305023 0.013373816385865211]		
+		Shape "trianglemesh"
+		"point P" [
+		-5.960464477539063e-08 1.1920928955078125e-07 0.0 2.0 1.1920928955078125e-07 0.0 2.0 2.0 0.0 -5.960464477539063e-08 1.1920928955078125e-07 0.0 2.0 2.0 0.0 -5.960464477539063e-08 2.0 0.0		
+		]
+		"normal N" [
+		0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0		
+		]
+		"float st" [
+		0.0 0.0 
+		1.0 0.0 
+		1.0 1.0 
+		0.0 0.0 
+		1.0 1.0 
+		0.0 1.0 
+		]
+		"integer indices" [
+		0 1 2 3 4 5 
+		]
+	AttributeEnd
+	
+
+	AttributeBegin
+		Transform [0.036481 0.000000 0.000000 0.000000 0.000000 0.036481 0.000000 0.000000 0.000000 0.000000 0.036481 0.000000 -0.323324 0.161052 0.036181 1.000000 ]
+		Material "mirror"		
+		"color Kr" [ 0.800000011920929 0.800000011920929 0.800000011920929]		
+		Shape "plymesh" "string filename" ["meshes/00001/Icosphere_mat0.ply"]
+	AttributeEnd
+	
+
+	AttributeBegin
+		Transform [-0.000811 -0.000380 0.000142 0.000000 0.000388 -0.000819 0.000027 0.000000 0.000117 0.000085 0.000895 0.000000 -0.329937 0.145072 0.090167 1.000000 ]
+		
+		Texture "sea_shell_0.exr" "color" "imagemap" "string filename" ["textures/sea_shell_0.exr"]		
+		Material "matte"		
+		"float sigma" [0.0]		
+		"texture Kd" "sea_shell_0.exr"		
+		Shape "plymesh" "string filename" ["meshes/00001/sea_shell_mat0.ply"]
+	AttributeEnd
+	
+
+WorldEnd
