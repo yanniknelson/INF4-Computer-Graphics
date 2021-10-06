@@ -1,4 +1,4 @@
-Film "image" "integer xresolution" [2160] "integer yresolution" [2160] "string filename" "ahhhhhhh00001.exr"
+Film "image" "integer xresolution" [2160] "integer yresolution" [2160] "string filename" "ahhhhhhh200001.exr"
 PixelFilter "box" "float xwidth" [0.5] "float ywidth" [0.5] 
 Accelerator "bvh" 
 "string splitmethod" "sah"
@@ -141,7 +141,7 @@ WorldBegin
 	
 
 	AttributeBegin
-		Transform [-0.000811 -0.000380 0.000142 0.000000 0.000388 -0.000819 0.000027 0.000000 0.000117 0.000085 0.000895 0.000000 -0.267833 0.148811 0.090167 1.000000 ]
+		Transform [-0.000811 -0.000307 0.000265 0.000000 0.000388 -0.000758 0.000310 0.000000 0.000117 0.000390 0.000810 0.000000 -0.267833 0.159163 0.090167 1.000000 ]
 		
 		Texture "sea_shell_0.exr" "color" "imagemap" "string filename" ["textures/sea_shell_0.exr"]		
 		Material "matte"		
