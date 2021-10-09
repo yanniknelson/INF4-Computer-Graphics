@@ -1,0 +1,2 @@
+Please note that the actual textures used were in exr format, I have simply supplied the original jpg format textures as well to make them viewable.
+Similarly the renders were exr format, but I have provided jpg versions, if you want the exr renders or to produce them yourself, please see the scene folders.

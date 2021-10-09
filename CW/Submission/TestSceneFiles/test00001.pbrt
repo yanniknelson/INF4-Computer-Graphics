@@ -1,0 +1,150 @@
+Film "image" "integer xresolution" [1366] "integer yresolution" [768] "string filename" "test_render00001.exr"
+PixelFilter "box" "float xwidth" [0.5] "float ywidth" [0.5] 
+Accelerator "bvh" 
+"string splitmethod" "sah"
+"integer maxnodeprims" [4]
+Sampler "halton"
+"integer pixelsamples" [700]
+"bool samplepixelcenter" "false"
+Integrator "path"
+"integer maxdepth" [10]
+Scale -1 1 1 #avoid the 'flipped image' bug..
+LookAt	-3.690601348876953 -4.579176425933838 4.958309173583984
+	-3.120706081390381 -3.9073705673217773 4.485132217407227
+	0.3060965836048126 0.36083391308784485 0.8809674978256226
+
+Camera "perspective"
+"float fov" [22.895194130645738]
+WorldBegin
+
+	AttributeBegin
+		Translate	4.076245307922363 1.0054539442062378 5.903861999511719
+		LightSource "point"
+"rgb I" [0.0 0.0 0.0]
+	AttributeEnd
+	
+
+	AttributeBegin
+		Transform [0.000000 -0.000000 -4.000000 0.000000 -4.000000 -0.000000 0.000000 0.000000 -0.000000 4.000000 -0.000000 0.000000 0.000000 4.000000 4.000000 1.000000 ]
+		Material "matte"		
+		"float sigma" [0.0]		
+		"color Kd" [ 0.0766686424612999 0.7362815141677856 0.8000000715255737]		
+		Shape "trianglemesh"
+		"point P" [
+		-1.0 -1.0 0.0 1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 1.0 0.0		
+		]
+		"normal N" [
+		0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0		
+		]
+		"float st" [
+		0.0 0.0 
+		1.0 0.0 
+		1.0 1.0 
+		0.0 0.0 
+		1.0 1.0 
+		0.0 1.0 
+		]
+		"integer indices" [
+		0 1 2 3 4 5 
+		]
+	AttributeEnd
+	
+
+	AttributeBegin
+		Transform [1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 1.942041 1.902727 0.246009 1.000000 ]
+		Material "matte"		
+		"float sigma" [0.0]		
+		"color Kd" [ 0.8000000715255737 0.30844348669052124 0.021210171282291412]		
+		Shape "plymesh" "string filename" ["meshes/00001/Torus_mat0.ply"]
+	AttributeEnd
+	
+
+	AttributeBegin
+		Transform [4.000000 0.000000 0.000000 0.000000 0.000000 4.000000 0.000000 0.000000 0.000000 0.000000 4.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ]
+		Material "matte"		
+		"float sigma" [0.0]		
+		"color Kd" [ 0.0766686424612999 0.7362815141677856 0.8000000715255737]		
+		Shape "trianglemesh"
+		"point P" [
+		-1.0 -1.0 0.0 1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 1.0 0.0		
+		]
+		"normal N" [
+		0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0		
+		]
+		"float st" [
+		0.0 0.0 
+		1.0 0.0 
+		1.0 1.0 
+		0.0 0.0 
+		1.0 1.0 
+		0.0 1.0 
+		]
+		"integer indices" [
+		0 1 2 3 4 5 
+		]
+	AttributeEnd
+	
+
+	AttributeBegin
+		Transform [-0.000000 0.000000 -4.000000 0.000000 0.000000 4.000000 0.000000 0.000000 4.000000 0.000000 -0.000000 0.000000 4.000000 0.000000 4.000000 1.000000 ]
+		Material "matte"		
+		"float sigma" [0.0]		
+		"color Kd" [ 0.0766686424612999 0.7362815141677856 0.8000000715255737]		
+		Shape "trianglemesh"
+		"point P" [
+		-1.0 -1.0 0.0 1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 1.0 0.0		
+		]
+		"normal N" [
+		0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0		
+		]
+		"float st" [
+		0.0 0.0 
+		1.0 0.0 
+		1.0 1.0 
+		0.0 0.0 
+		1.0 1.0 
+		0.0 1.0 
+		]
+		"integer indices" [
+		0 1 2 3 4 5 
+		]
+	AttributeEnd
+	
+
+	AttributeBegin
+		Transform [0.703338 -0.872939 0.000000 0.000000 0.772953 0.622778 -0.520958 0.000000 0.405667 0.326851 0.992627 0.000000 1.433501 1.323179 0.901808 1.000000 ]
+		Material "glass"		
+		"color Kr" [ 0.800000011920929 0.800000011920929 0.800000011920929]		
+		"color Kt" [ 0.800000011920929 0.800000011920929 0.800000011920929]		
+		"float uroughness" [0.0]		
+		"float vroughness" [0.0]		
+		"float index" [1.3329999446868896]		
+		Shape "plymesh" "string filename" ["meshes/00001/Suzanne_mat0.ply"]
+	AttributeEnd
+	
+
+	AttributeBegin
+		Transform [0.759712 -0.650259 0.000000 0.000000 -0.429127 -0.501359 -0.751325 0.000000 0.488556 0.570791 -0.659932 0.000000 -1.431368 -0.702670 4.773276 1.000000 ]
+		AreaLightSource "diffuse" "blackbody L" [5500 		50]		
+		Shape "trianglemesh"
+		"point P" [
+		-1.0 -1.0 0.0 1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 -1.0 0.0 1.0 1.0 0.0 -1.0 1.0 0.0		
+		]
+		"normal N" [
+		0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0		
+		]
+		"float st" [
+		0.0 0.0 
+		1.0 0.0 
+		1.0 1.0 
+		0.0 0.0 
+		1.0 1.0 
+		0.0 1.0 
+		]
+		"integer indices" [
+		0 1 2 3 4 5 
+		]
+	AttributeEnd
+	
+
+WorldEnd
