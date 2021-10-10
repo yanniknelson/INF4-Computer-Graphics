@@ -5,4 +5,7 @@ Due to my laptop issues, this has not been saved in the blender file.
 As such the Scene4.pbrt differs slightly from the test00001.pbrt file in the transform of the shell. 
 The transform in Scene4.pbrt is the correct one and for the purposes of recreation should be coppied over.
 
+Due to the submission file size restriction, you will need to download the shell file from the link in the report and copy the ply file to the sea shell ply folder
+in this directory as well as convert the texture to exr and copy it into this and the seashell folder
+
 P.S. the output file produced will not be Scene4.exr, it will be ahhhhh...001.exr

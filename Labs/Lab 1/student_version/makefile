@@ -22,7 +22,7 @@ driver.o: driver.cpp world.h agent.h
 #  and agent.h and is "made" by running "g++ -ansi -Wall -c world.cpp"
 # -------------------------------------------------------------------------
 world.o: world.cpp world.h agent.h
-	g++ -Wall -std=c++11 -c world.cpp `pkg-config --cflags --libs opencv4`
+	g++ -Wall -std=c++11 -IC C:/OpenCV-4.5.3/opencv/build/include -c world.cpp `pkg-config --cflags --libs opencv4`
 
 # -------------------------------------------------------------------------
 #  This rule says that agent.o depends on agent.cpp and agent.h
