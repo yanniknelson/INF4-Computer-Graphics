@@ -1,0 +1,5 @@
+C:/Users/YannikNelson/Documents/GitHub/INF4-Computer-Graphics/CW/CW2/RayTracer/build/CMakeFiles/raytracer.dir
+C:/Users/YannikNelson/Documents/GitHub/INF4-Computer-Graphics/CW/CW2/RayTracer/build/CMakeFiles/jsonexample.dir
+C:/Users/YannikNelson/Documents/GitHub/INF4-Computer-Graphics/CW/CW2/RayTracer/build/CMakeFiles/vectorexample.dir
+C:/Users/YannikNelson/Documents/GitHub/INF4-Computer-Graphics/CW/CW2/RayTracer/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/YannikNelson/Documents/GitHub/INF4-Computer-Graphics/CW/CW2/RayTracer/build/CMakeFiles/ZERO_CHECK.dir

@@ -1,0 +1,7 @@
+﻿  vecMatrixExample.cpp
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\examples\vecMatrixExample.cpp(50,138): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+  vectorexample.vcxproj -> C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\build\Debug\vectorexample.exe
