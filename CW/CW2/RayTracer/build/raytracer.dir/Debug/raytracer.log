@@ -1,6 +1,7 @@
-﻿  RayTracer.cpp
-C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\math/Transform.h(122,29): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Scene.h(33,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Scene.h(37,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core\Scene.h(44): warning C4715: 'rt::Scene::getShape': not all control paths return a value
+﻿  BlinnPhong.cpp
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\math\Transform.h(121,28): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Scene.h(32,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Scene.h(36,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core\Scene.h(49): warning C4715: 'rt::Scene::getLight': not all control paths return a value
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core\Scene.h(43): warning C4715: 'rt::Scene::getShape': not all control paths return a value
   raytracer.vcxproj -> C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\build\Debug\raytracer.exe

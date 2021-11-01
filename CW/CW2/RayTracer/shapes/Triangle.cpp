@@ -73,9 +73,11 @@ namespace rt{
 		float b0 = e0 / det;
 		float b1 = e1 / det;
 		float b2 = e2 / det;
-		h.tVlaue = tScaled / det;
+		h.tValue = tScaled / det;
 		h.valid = true;
 		h.object = this;
+		h.point = ray(h.tValue);
+		h.normal = (v0 - h.point).crossProduct(v1 - h.point).normalized();
 		return h;
 
 	}

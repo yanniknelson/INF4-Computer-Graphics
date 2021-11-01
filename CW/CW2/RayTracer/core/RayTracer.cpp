@@ -28,16 +28,13 @@ Vec3f* RayTracer::render(Camera* camera, Scene* scene, int nbounces){
 
 	//----------main rendering function to be filled
 
-
+	float max = 0.f;
 	for (int row = 0; row < camHeight; row++) {
 		for (int column = 0; column < camWidth; column++) {
 			Ray r {};
-			Vec2f pFilm = Vec2f((float)column / (float)camWidth, (float)row / (float)camHeight);
-			pFilm *= 2.f;
-			pFilm -= 1.f;
-			CameraSample s { pFilm * 400, Vec2f(0, 0), 0.f };
+			CameraSample s{ Vec2f((camWidth/2) -column , row - camHeight), Vec2f(0, 0), 0.f };
 			camera->GenerateRay(s, &r);
-			pixelbuffer[row * camHeight + column] = scene->backgroundColour;
+			pixelbuffer[row * camWidth + column] = scene->backgroundColour;
 			std::vector<Hit> hits;
 			for (int i = 0; i < scene->GetNumShapes(); i++) {
 				hits.push_back(scene->getShape(i)->intersect(r));
@@ -45,14 +42,29 @@ Vec3f* RayTracer::render(Camera* camera, Scene* scene, int nbounces){
 			}
 			Hit closest = Hit{};
 			for (int i = 0; i < hits.size(); i++) {
-				//std::cout << hits[i].valid  << "("<< hits[i].tVlaue<<")";
-				if (hits[i].tVlaue < closest.tVlaue && hits[i].valid) closest = hits[i];
+				//std::cout << hits[i].valid  << "("<< hits[i].tValue<<")";
+				if (hits[i].tValue < closest.tValue && hits[i].valid) closest = hits[i];
 			}
 			//std::cout << std::endl;
+			
+			if (closest.valid) {
+				pixelbuffer[row * camWidth + column] = Transform::Clamp(((Shape*)closest.object)->getMaterial()->GetShading(closest, scene, camera->getPos(), nbounces), 0.f, 1.f);
+			} 
+			if (pixelbuffer[row * camWidth + column].x > max) max = pixelbuffer[row * camWidth + column].x;
+			if (pixelbuffer[row * camWidth + column].y > max) max = pixelbuffer[row * camWidth + column].y;
+			if (pixelbuffer[row * camWidth + column].z > max) max = pixelbuffer[row * camWidth + column].z;
 
-			if (closest.valid) pixelbuffer[row * camHeight + column] = ((Shape*)closest.object)->getMaterial().Diffuse;
 		}
 	}
+
+	/*if (max > 1.f) {
+		std::cout << "Scaling Triggered" << std::endl;
+		for (int row = 0; row < camHeight; row++) {
+			for (int column = 0; column < camWidth; column++) {
+				pixelbuffer[row * camHeight + column] /= max;
+			}
+		}
+	}*/
 
 
 	return pixelbuffer;

@@ -6,10 +6,11 @@
 #ifndef SHAPE_H_
 #define SHAPE_H_
 
+#pragma once
 #include "math/Transform.h"
 #include "core/RayHitStructs.h"
 #include "core/Material.h"
-
+#include "materials/BlinnPhong.h"
 #include "rapidjson/document.h"
 
 using namespace rapidjson;
@@ -38,14 +39,7 @@ public:
 
 	bool Quadratic(float a, float b, float c, float& t0, float& t1);
 
-	template<typename T>
-	T Clamp(T a, T b, T c) {
-		if (a > c) return c;
-		if (a < b) return b;
-		return a;
-	}
-
-	const Material getMaterial() { return (material) ? *material : Material{}; };
+	const Material* getMaterial() { return (material) ? material: nullptr; };
 
 
 protected:

@@ -95,6 +95,10 @@ public:
     Vec3(T xx) : x(xx), y(xx), z(xx) {}
     Vec3(T xx, T yy, T zz) : x(xx), y(yy), z(zz) {}
 
+    bool operator == (const Vec3 &v) const
+    { return ((x == v.x) && (y == v.y) && (z == v.z)); }
+    bool operator != (const Vec3 &v) const
+    { return ((x != v.x) || (y != v.y) || (z != v.z)); }
     // Returns new Vector
     Vec3 operator + (const Vec3 &v) const
     { return Vec3(x + v.x, y + v.y, z + v.z); }
@@ -140,6 +144,10 @@ public:
     //[/comment]
     const T& operator [] (uint8_t i) const { return (&x)[i]; }
     T& operator [] (uint8_t i) { return (&x)[i]; }
+
+    //returns the scalar projection of v onto vector
+    float ScalarProject(const Vec3<T>& v) const
+    { return dotProduct(v)/length(); }
 
     int MaxDimension() {
         return(x > y) ? ((x > z) ? 0 : 2) : ((y > z) ? 1 : 2);

@@ -8,6 +8,7 @@
 
 #include "rapidjson/document.h"
 #include "math/geometry.h"
+#include "math/Transform.h"
 
 using namespace rapidjson;
 
@@ -23,6 +24,8 @@ public:
 	LightSource(Vec3f position = {}, Vec3f is = {}, Vec3f id = {}) : position(position), is(is), id(id) {};
 
 	static LightSource* createLightSource(Value& lightSpecs);
+
+	virtual Vec3f SampleLight(Vec3f point) = 0;
 
 private:
 

@@ -331,6 +331,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\shapes\TriMesh.cpp" />
     <ClCompile Include="C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\shapes\Triangle.cpp" />
     <ClInclude Include="..\math\Transform.h" />
+    <ClInclude Include="..\parsers\stb.h" />
     <ClInclude Include="..\shapes\Plane.h" />
     <ClInclude Include="C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\math\geometry.h" />
     <ClInclude Include="C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\parsers\rapidjson\allocators.h" />

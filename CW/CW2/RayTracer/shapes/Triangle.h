@@ -21,7 +21,7 @@ public:
 		std::cout << "Triangle" << std::endl; 
 		material = mat;
 		Vec3f avg = ((v0 + v1 + v2)/3).normalized();
-		std::cout << intersect(Ray(Vec3f{}, avg)).tVlaue << std::endl;
+		std::cout << intersect(Ray(Vec3f{}, avg)).tValue << std::endl;
 
 	};
 

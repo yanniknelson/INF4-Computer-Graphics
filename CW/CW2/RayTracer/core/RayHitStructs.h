@@ -37,7 +37,7 @@ struct Hit{
 	//----------Hit variables to be filled------
 
 	bool valid = false;
-	float tVlaue = std::numeric_limits<float>::max();
+	float tValue = std::numeric_limits<float>::max();
 	Vec3f normal;
 
 	//void pointer due to circular includes

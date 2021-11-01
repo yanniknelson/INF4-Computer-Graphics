@@ -18,6 +18,8 @@ public:
 	PointLight();
 	PointLight(Vec3f position = {}, Vec3f is = {}, Vec3f id = {}):LightSource(position, is, id){}
 
+	Vec3f SampleLight(Vec3f point);
+
 };
 
 

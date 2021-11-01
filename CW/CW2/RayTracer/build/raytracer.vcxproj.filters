@@ -123,6 +123,9 @@
     <ClInclude Include="..\math\Transform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\parsers\stb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\CMakeLists.txt" />

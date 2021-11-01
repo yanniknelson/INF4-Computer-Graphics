@@ -29,7 +29,7 @@ public:
 	// Constructors
 	//
 	Camera(){};
-	Camera(int height, int width, int fov, Vec3f pos, Vec3f up, Vec3f lookAt) :height(height), width(width), fov(fov) {
+	Camera(int height, int width, int fov, Vec3f pos, Vec3f up, Vec3f lookAt) :height(height), width(width), fov(fov), pos(pos) {
 		CameraToWorld = Transform::LookAt(pos, lookAt, up);
 		std::cout << CameraToWorld.m << std::endl;
 		std::cout << CameraToWorld.TransformRay(Ray(Vec3f{}, Vec3f(0,0,1))).o << CameraToWorld.TransformRay(Ray(Vec3f{}, Vec3f(0, 0, 1))).d << std::endl;
@@ -81,6 +81,10 @@ public:
 		this->width = width;
 	}
 
+	Vec3f getPos() {
+		return pos;
+	}
+
 
 
 protected:
@@ -91,6 +95,7 @@ protected:
 	int height;
 	int width;
 	int fov; //field of view
+	Vec3f pos;
 
 	Transform WorldToCamera;
 	Transform CameraToWorld;

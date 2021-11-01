@@ -13,6 +13,7 @@ namespace rt{
 
 class AreaLight:public LightSource{
 
+	Vec3f SampleLight(Vec3f point);
 
 };
 

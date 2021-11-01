@@ -2,7 +2,11 @@
  * Material.cpp
  *
  */
+
+
+
 #include "Material.h"
+#include "materials/BlinnPhong.h"
 
 
 namespace rt{
@@ -19,12 +23,22 @@ namespace rt{
 		float kr = 0;
 		float spec = 0;
 
+		std::string tPath;
+		int tWidth = 0;
+		int tHeight = 0;
+
 		if (materialSpecs.HasMember("ks")) ks = materialSpecs["ks"].GetFloat();
 		if (materialSpecs.HasMember("kd")) kd = materialSpecs["kd"].GetFloat();
 		if (materialSpecs.HasMember("kr")) kr = materialSpecs["kr"].GetFloat();
 		if (materialSpecs.HasMember("specularexponent"))spec = materialSpecs["specularexponent"].GetInt();
 
-		return new Material(ks, kd, kr, spec, Vec3f(r,g,b));
+		if (materialSpecs.HasMember("tPath")) {
+			tPath = materialSpecs["tPath"].GetString();
+			tWidth = materialSpecs["tWidth"].GetInt();
+			tHeight = materialSpecs["tHeight"].GetInt();
+		}
+
+		return new BlinnPhong(ks, kd, kr, spec, Vec3f(r,g,b), tPath, tWidth, tHeight);
 
 	}
 

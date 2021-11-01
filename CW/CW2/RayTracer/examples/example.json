@@ -30,7 +30,7 @@
             "specularexponent":3,
             "diffusecolor":[0.4, 0.3, 0.4],
             "tPath": "../textures/sky-map.jpg",
-            "tWidth": 850,
+            "tWidth": 852,
             "tHeight": 480
         }
     },
@@ -64,7 +64,7 @@
             "diffusecolor": [1.0, 1.0, 1.0],
             "tPath": "../textures/sicily.jpg",
             "tWidth": 600,
-            "tHeight": 490
+            "tHeight": 494
         }
     },
     {
