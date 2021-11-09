@@ -12,6 +12,7 @@
 #include "core/LightSource.h"
 #include "core/Shape.h"
 #include "math/geometry.h"
+#include "shapes/BVH.h"
 
 
 
@@ -36,7 +37,7 @@ namespace rt{
 			return shapes.size();
 		}
 
-		Shape* getShape(int i) {
+		std::shared_ptr<Shape> getShape(int i) {
 			if (i < shapes.size()) {
 				return shapes[i];
 			}
@@ -48,10 +49,16 @@ namespace rt{
 			}
 		}
 
-private:
+		Hit IntersectScene(Ray r);
 
-	std::vector<LightSource*> lightSources;
-	std::vector<Shape*> shapes;
+		BVH::Node* VolumeRoot;
+
+	private:
+
+		std::vector<LightSource*> lightSources{};
+		std::vector<std::shared_ptr<Shape>> shapes{};
+
+	
 
 };
 

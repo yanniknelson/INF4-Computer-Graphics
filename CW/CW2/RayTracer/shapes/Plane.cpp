@@ -21,6 +21,7 @@ namespace rt{
 			h = t2.intersect(ray);
 		}
 
+		h.object = this;
 		h.normal = (v0 - v1).crossProduct(v2 - v1).normalized();
 
 		Vec3f du = (v1 - v0);

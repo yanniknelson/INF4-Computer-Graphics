@@ -21,11 +21,11 @@ public:
 	//----------Ray variables to be filled------
 	Vec3f o;
 	Vec3f d;
-	float time;
+	float medium = 1.f;
 	mutable float tMax;
 
-	Ray() : tMax(std::numeric_limits<float>::infinity()), time(0.f) {};
-	Ray(const Vec3f& o, const Vec3f& d, float tMax = std::numeric_limits<float>::infinity(), float time = 0.f) : o(o), d(d), tMax(tMax), time(time) {};
+	Ray() : tMax(std::numeric_limits<float>::infinity()) {};
+	Ray(const Vec3f& o, const Vec3f& d, float tMax = std::numeric_limits<float>::infinity(), float time = 0.f) : o(o), d(d), tMax(tMax) {};
 
 	Vec3f operator()(float t) const {return o + d * t;}
 };
@@ -39,6 +39,8 @@ struct Hit{
 	bool valid = false;
 	float tValue = std::numeric_limits<float>::max();
 	Vec3f normal;
+	float medium = 1.f;
+	bool interior = false;
 
 	//void pointer due to circular includes
 	void* object;

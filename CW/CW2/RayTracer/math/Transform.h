@@ -4,6 +4,7 @@
 
 //#include "math/geometry.h"
 #include "core/RayHitStructs.h"
+#include "shapes/Bounds.h"
 
 namespace rt {
 
@@ -29,32 +30,45 @@ namespace rt {
         Transform Inverse() { return Transform(mInv, m); };
         Transform Transpose() { return Transform(m.transposed(), mInv.transposed()); };
 
-        inline Vec3f TransformPoint(const Vec3f p) {
+        inline Vec3f TransformPoint(const Vec3f p) const {
             Vec3f ret{};
             m.multVecMatrix(p, ret);
             return ret;
         }
 
-        inline Vec3f TransformDirection(const Vec3f d) {
+        inline Vec3f TransformDirection(const Vec3f d) const {
             Vec3f ret{};
             m.multDirMatrix(d, ret);
             return ret;
         }
 
-        inline Vec3f TransformNormal(const Vec3f n) {
+        inline Vec3f TransformNormal(const Vec3f n) const {
             Vec3f ret{};
             mInv.multDirMatrix(n, ret);
             return ret;
         }
 
-        inline Ray TransformRay(const Ray& r) {
+        inline Ray TransformRay(const Ray& r) const {
             Vec3f o = TransformPoint(r.o);
             Vec3f d = TransformDirection(r.d);
             return Ray(o, d);
         };
 
+        Bounds3f TransformBounds3(const Bounds3f& b) const {
+            const Transform& M = *this;
+            Bounds3f ret(M.TransformPoint(b.pMin));
+            ret = ret.Union(ret, M.TransformPoint(Vec3f(b.pMax.x, b.pMin.y, b.pMin.z)));
+            ret = ret.Union(ret, M.TransformPoint(Vec3f(b.pMin.x, b.pMax.y, b.pMin.z)));
+            ret = ret.Union(ret, M.TransformPoint(Vec3f(b.pMin.x, b.pMin.y, b.pMax.z)));
+            ret = ret.Union(ret, M.TransformPoint(Vec3f(b.pMin.x, b.pMax.y, b.pMax.z)));
+            ret = ret.Union(ret, M.TransformPoint(Vec3f(b.pMax.x, b.pMax.y, b.pMin.z)));
+            ret = ret.Union(ret, M.TransformPoint(Vec3f(b.pMax.x, b.pMin.y, b.pMax.z)));
+            ret = ret.Union(ret, M.TransformPoint(Vec3f(b.pMax.x, b.pMax.y, b.pMax.z)));
+            return ret;
+        }
+
         Transform operator* (const Transform& t2) const {
-            return Transform(m * t2.m, mInv * t2.mInv);
+            return Transform(m * t2.m, t2.mInv * mInv);
         }
 
         static Transform Translate(const Vec3f& d) {
@@ -74,16 +88,18 @@ namespace rt {
             mt[0][0] = x;
             mt[1][1] = y;
             mt[2][2] = z;
+            mt[3][3] = 1.f;
             Matrix44f minvt{};
-            minvt[0][0] = 1 / x;
-            minvt[1][1] = 1 / y;
-            minvt[2][2] = 1 / z;
+            minvt[0][0] = 1.f / x;
+            minvt[1][1] = 1.f / y;
+            minvt[2][2] = 1.f / z;
+            minvt[3][3] = 1.f;
             return Transform(mt, minvt);
         };
 
         static Transform LookAt(const Vec3f& pos, const Vec3f& look, const Vec3f& up) {
 
-            std::cout << pos << look << up << std::endl;
+            //std::cout << pos << look << up << std::endl;
 
             Matrix44f mt{};
             mt[0][3] = pos.x;
@@ -91,9 +107,11 @@ namespace rt {
             mt[2][3] = pos.z;
             mt[3][3] = 1;
             Vec3f dir = (look - pos).normalized();
+            //the given example has the wrong look at vector
+            dir = look.normalized();
             Vec3f left = up.normalized().crossProduct(dir).normalized();
             Vec3f newUp = dir.crossProduct(left);
-            std::cout << dir << left << newUp << std::endl;
+            //std::cout << dir << left << newUp << std::endl;
 
             mt[0][0] = left.x;
             mt[1][0] = left.y;
@@ -108,7 +126,7 @@ namespace rt {
             mt[2][2] = dir.z;
             mt[3][2] = 0;
 
-            std::cout << mt << std::endl;
+            //std::cout << mt << std::endl;
 
             return Transform(mt, mt.inverse());
         }

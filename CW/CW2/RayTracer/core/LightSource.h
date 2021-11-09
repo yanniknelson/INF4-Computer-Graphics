@@ -25,7 +25,7 @@ public:
 
 	static LightSource* createLightSource(Value& lightSpecs);
 
-	virtual Vec3f SampleLight(Vec3f point) = 0;
+	virtual Vec3f SampleLight(Hit hit, void * scene) = 0;
 
 private:
 

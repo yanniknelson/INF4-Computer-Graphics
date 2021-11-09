@@ -12,8 +12,6 @@ namespace rt{
 
 	Camera::~Camera(){};
 
-
-
 /**
  * Factory function that returns camera subclass based on camera specifications
  *
@@ -39,12 +37,10 @@ Camera* Camera::createCamera(Value& cameraSpecs){
 
 	//return camera object based on camera specs
 	if (cameraType.compare("pinhole")==0){
-		return new Pinhole(cameraSpecs["width"].GetInt(),
-				cameraSpecs["height"].GetInt(),
-				cameraSpecs["fov"].GetInt(), position, up, lookAt);
+		return new Pinhole(cameraSpecs["width"].GetInt(), cameraSpecs["height"].GetInt(), cameraSpecs["fov"].GetInt(), position, up, lookAt);
 
 	}else if (cameraType.compare("thinlens")==0){
-		return new ThinLens();
+		return new ThinLens(cameraSpecs["width"].GetInt(), cameraSpecs["height"].GetInt(), cameraSpecs["fov"].GetInt(), cameraSpecs["lensRadius"].GetFloat(), cameraSpecs["focalDistance"].GetFloat(), position, up, lookAt);
 	}
 
 	return 0;

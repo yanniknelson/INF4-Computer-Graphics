@@ -6,6 +6,7 @@
 #include "LightSource.h"
 #include "lights/PointLight.h"
 #include "lights/AreaLight.h"
+#include "Shape.h"
 
 namespace rt{
 
@@ -28,7 +29,9 @@ namespace rt{
 			Vec3f id{ lightSpecs["id"][0].GetFloat(), lightSpecs["id"][1].GetFloat(), lightSpecs["id"][2].GetFloat() };
 			return new PointLight(pos, is, id);
 		} else if (lightType.compare("arealight") == 0) {
-			return new AreaLight();
+			Vec3f is{ lightSpecs["is"][0].GetFloat(), lightSpecs["is"][1].GetFloat(), lightSpecs["is"][2].GetFloat() };
+			Vec3f id{ lightSpecs["id"][0].GetFloat(), lightSpecs["id"][1].GetFloat(), lightSpecs["id"][2].GetFloat() };
+			return new AreaLight(is, id, Shape::createShape(lightSpecs["shape"]));
 		}
 
 		return 0;

@@ -66,6 +66,10 @@ public:
     {x += r, y += r; return *this;}
     Vec2& operator -= (const T& r)
     {x -= r, y -= r; return *this;}
+    float length() {
+        return sqrt(x * x + y * y);
+    }
+
     friend std::ostream& operator << (std::ostream &s, const Vec2<T> &v)
     {
         return s << '[' << v.x << ' ' << v.y << ']';
@@ -124,6 +128,9 @@ public:
     Vec3& operator /= (const T &r)
     { x /= r, y /= r, z /= r; return *this; }
     // IN PLACE
+    Vec3& operator += (const Vec3<T> &r)
+    { x += r.x, y += r.y, z += r.z; return *this; }
+    // IN PLACE
     Vec3& operator *= (const T &r)
     { x *= r, y *= r, z *= r; return *this; }
     // Returns new Vector
@@ -149,8 +156,12 @@ public:
     float ScalarProject(const Vec3<T>& v) const
     { return dotProduct(v)/length(); }
 
-    int MaxDimension() {
+    const int MaxDimension() const {
         return(x > y) ? ((x > z) ? 0 : 2) : ((y > z) ? 1 : 2);
+    }
+
+    const int MinDimension() const{
+        return(x < y) ? ((x < z) ? 0 : 2) : ((y < z) ? 1 : 2);
     }
 
     Vec3 Permute(int a, int b, int c) {
@@ -209,6 +220,144 @@ public:
 //[/comment]
 typedef Vec3<float> Vec3f;
 typedef Vec3<int> Vec3i;
+
+template <typename T>
+class Matrix33 
+{
+public:
+
+    T x[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
+
+    Matrix33() {};
+
+    Matrix33(T a, T b, T c, T d, T e, T f, T g, T h, T i)
+    {
+        x[0][0] = a;
+        x[0][1] = b;
+        x[0][2] = c;
+        x[1][0] = d;
+        x[1][1] = e;
+        x[1][2] = f;
+        x[2][0] = g;
+        x[2][1] = h;
+        x[2][2] = i;
+    }
+
+    const T* operator [] (uint8_t i) const { return x[i]; }
+    T* operator [] (uint8_t i) { return x[i]; }
+
+    // Multiply the current matrix with another matrix (rhs)
+    Matrix33 operator * (const Matrix33& v) const
+    {
+        Matrix33 tmp;
+        multiply(*this, v, tmp);
+
+        return tmp;
+    }
+
+    static void multiply(const Matrix33<T>& a, const Matrix33& b, Matrix33& c)
+    {
+        // A restric qualified pointer (or reference) is basically a promise
+        // to the compiler that for the scope of the pointer, the target of the
+        // pointer will only be accessed through that pointer (and pointers
+        // copied from it.
+        const T* __restrict ap = &a.x[0][0];
+        const T* __restrict bp = &b.x[0][0];
+        T* __restrict cp = &c.x[0][0];
+
+        c[0][0] = a[0][0] * b[0][0] + a[0][1] * b[1][0] + a[0][2] * b[2][0];
+        c[1][0] = a[1][0] * b[0][0] + a[1][1] * b[1][0] + a[1][2] * b[2][0];
+        c[2][0] = a[2][0] * b[0][0] + a[2][1] * b[1][0] + a[2][2] * b[2][0];
+        c[0][1] = a[0][0] * b[0][1] + a[0][1] * b[1][1] + a[0][2] * b[2][1];
+        c[1][1] = a[1][0] * b[0][1] + a[1][1] * b[1][1] + a[1][2] * b[2][1];
+        c[2][1] = a[2][0] * b[0][1] + a[2][1] * b[1][1] + a[2][2] * b[2][1];
+        c[0][2] = a[0][0] * b[0][2] + a[0][1] * b[1][2] + a[0][2] * b[2][2];
+        c[1][2] = a[1][0] * b[0][2] + a[1][1] * b[1][2] + a[1][2] * b[2][2];
+        c[2][2] = a[2][0] * b[0][2] + a[2][1] * b[1][2] + a[2][2] * b[2][2];
+    }
+
+    template<typename S>
+    void multVecMatrix(const Vec3<S>& src, Vec3<S>& dst) const {
+    
+        S ox, y, z;
+
+        ox = src.x * x[0][0] + src.y * x[0][1] + src.z * x[0][2];
+        y = src.x * x[1][0] + src.y * x[1][1] + src.z * x[1][2];
+        z = src.x * x[2][0] + src.y * x[2][1] + src.z * x[2][2];
+
+        dst.x = ox;
+        dst.y = y;
+        dst.z = z;
+    
+    }
+
+    Matrix33& operator /= (const T& r)
+    {
+        x[0][0] /= r;
+        x[0][1] /= r;
+        x[0][2] /= r;
+        x[1][0] /= r;
+        x[1][1] /= r;
+        x[1][2] /= r;
+        x[2][0] /= r;
+        x[2][1] /= r;
+        x[2][2] /= r;
+
+        return *this;
+    }
+
+    Matrix33 inverse() const {
+        T det = x[0][0] * x[1][1] * x[2][2] - x[0][0] * x[1][2] * x[2][1] - x[0][1] * x[1][0] * x[2][2] + x[0][1] * x[1][2] * x[2][0] + x[0][2] * x[1][0] * x[2][1] - x[0][2] * x[1][1] * x[2][0];
+
+        Matrix33<T> r;
+
+        r[0][0] = x[1][1] * x[2][2] - x[1][2] * x[2][1];
+        r[0][1] = x[0][2] * x[2][1] - x[0][1] * x[2][2];
+        r[0][2] = x[0][1] * x[1][2] - x[0][2] * x[1][1];
+        r[1][0] = x[1][2] * x[2][0] - x[1][0] * x[2][2];
+        r[1][1] = x[0][0] * x[2][2] - x[0][2] * x[2][0];
+        r[1][2] = x[0][2] * x[1][0] - x[0][0] * x[1][2];
+        r[2][0] = x[1][0] * x[2][1] - x[1][1] * x[2][0];
+        r[2][1] = x[0][1] * x[2][0] - x[0][0] * x[2][1];
+        r[2][2] = x[0][0] * x[1][1] - x[0][1] * x[1][0];
+
+        r /= det;
+
+        return r;
+
+    }
+
+    Matrix33& invert() const {
+        *this = inverse();
+        return *this;
+    }
+
+    friend std::ostream& operator << (std::ostream& s, const Matrix33& m)
+    {
+        std::ios_base::fmtflags oldFlags = s.flags();
+        int width = 12; // total with of the displayed number
+        s.precision(5); // control the number of displayed decimals
+        s.setf(std::ios_base::fixed);
+
+        s << "[" << std::setw(width) << m[0][0] <<
+            " " << std::setw(width) << m[0][1] <<
+            " " << std::setw(width) << m[0][2] << "\n" <<
+
+            " " << std::setw(width) << m[1][0] <<
+            " " << std::setw(width) << m[1][1] <<
+            " " << std::setw(width) << m[1][2] << "\n" <<
+
+            " " << std::setw(width) << m[2][0] <<
+            " " << std::setw(width) << m[2][1] <<
+            " " << std::setw(width) << m[2][2] << "]";
+
+        s.flags(oldFlags);
+        return s;
+    }
+
+};
+
+typedef Matrix33<float> Matrix33f;
 
 //[comment]
 // Implementation of a generic 4x4 Matrix class - Same thing here than with the Vec3 class. It uses
@@ -570,45 +719,6 @@ public:
 };
 
 typedef Matrix44<float> Matrix44f;
-
-template <typename T>
-class Bounds2 {
-public:
-    Vec2<T> pMin;
-    Vec2<T> pMax;
-
-    Bounds2() {
-        T minNum = std::numeric_limits<T>::lowest();
-        T maxNum = std::numeric_limits<T>::max();
-        pMin = { minNum, minNum};
-        pMax = { maxNum, maxNum};
-    }
-
-    Bounds2(const Vec2f& p): pMin(p), pMax(p) {};
-
-    Bounds2(const Vec2f& p1, const Vec2f& p2): pMin(std::min(p1.x, p2.x), std::min(p1.y, p2.y)), pMax(std::max(p1.x, p2.x), std::max(p1.y, p2.y)) {};
-};
-
-template <typename T>
-class Bounds3 {
-public:
-    Vec3<T> pMin;
-    Vec3<T> pMax;
-
-    Bounds3() {
-        T minNum = std::numeric_limits<T>::lowest();
-        T maxNum = std::numeric_limits<T>::max();
-        pMin = { minNum, minNum, minNum };
-        pMax = { maxNum, maxNum, maxNum };
-    }
-
-    Bounds3(const Vec3f& p): pMin(p), pMax(p) {};
-
-    Bounds3(const Vec3f& p1, const Vec3f& p2): pMin(std::min(p1.x, p2.x), std::min(p1.y, p2.y), std::min(p1.z, p2.z)), pMax(std::max(p1.x, p2.x), std::max(p1.y, p2.y), std::max(p1.z, p2.z)) {};
-};
-
-typedef Bounds2<float> Bounds2f;
-typedef Bounds3<float> Bounds3f;
 
 #endif /* GEOMETRY_H_ */
 

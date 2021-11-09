@@ -35,19 +35,35 @@ public:
 	//
 	virtual Hit intersect(Ray)=0;
 
-	static Shape* createShape(Value& lightSpecs);
+	static std::shared_ptr<Shape> createShape(Value& lightSpecs);
 
 	bool Quadratic(float a, float b, float c, float& t0, float& t1);
 
 	const Material* getMaterial() { return (material) ? material: nullptr; };
 
+	const bool IntersectsBounds(Ray& ray) const;
 
+	const Bounds3f getWorldBounds() const {
+		return WorldBound;
+	}
+
+	const Vec3f getCentroid() const {
+		return centroid;
+	}
+
+	std::string name;
 protected:
 
 	Material * material = nullptr;
 
+	
+
+	Vec3f centroid = {};
+
 	Transform WorldToObject;
 	Transform ObjectToWorld;
+	Bounds3f ObjectBound;
+	Bounds3f WorldBound;
 
 };
 

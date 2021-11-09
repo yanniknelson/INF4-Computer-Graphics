@@ -6,7 +6,7 @@
 #include "shapes/Sphere.h"
 #include "shapes/Triangle.h"
 #include "shapes/Plane.h"
-
+#include "shapes/TriMesh.h"
 
 
 namespace rt{
@@ -27,7 +27,7 @@ namespace rt{
 
 	Shape::~Shape() {};
 
-		Shape* Shape::createShape(Value& shapeSpecs) {
+		std::shared_ptr<Shape> Shape::createShape(Value& shapeSpecs) {
 
 		//check if cameratype is defined
 
@@ -42,24 +42,53 @@ namespace rt{
 		if (shapeType.compare("sphere") == 0) {
 			Vec3f center { shapeSpecs["center"][0].GetFloat(), shapeSpecs["center"][1].GetFloat(), shapeSpecs["center"][2].GetFloat() };
 			float r = shapeSpecs["radius"].GetFloat();
-			return new Sphere(center, r, Material::createMaterial((Value&)shapeSpecs["material"]));
+			auto ret = std::make_shared<Sphere>(center, r, Material::createMaterial((Value&)shapeSpecs["material"]));
+			if (shapeSpecs.HasMember("id")) {
+				ret->name = shapeSpecs["id"].GetString();
+				std::cout << ret->name << std::endl;
+			}
+			return ret;
 		}
 		else if (shapeType.compare("triangle") == 0) {
 			Vec3f v0{ shapeSpecs["v0"][0].GetFloat(), shapeSpecs["v0"][1].GetFloat(), shapeSpecs["v0"][2].GetFloat() };
 			Vec3f v1{ shapeSpecs["v1"][0].GetFloat(), shapeSpecs["v1"][1].GetFloat(), shapeSpecs["v1"][2].GetFloat() };
 			Vec3f v2{ shapeSpecs["v2"][0].GetFloat(), shapeSpecs["v2"][1].GetFloat(), shapeSpecs["v2"][2].GetFloat() };
-			return new Triangle(v0, v1, v2, Material::createMaterial((Value&)shapeSpecs["material"]));
+			auto ret = std::make_shared<Triangle>(v0, v1, v2, Material::createMaterial((Value&)shapeSpecs["material"]));
+			if (shapeSpecs.HasMember("id")) {
+				ret->name = shapeSpecs["id"].GetString();
+				std::cout << ret->name << std::endl;
+			}
+			return ret;
 		} else if (shapeType.compare("plane") == 0) {
 			Vec3f v0{ shapeSpecs["v0"][0].GetFloat(), shapeSpecs["v0"][1].GetFloat(), shapeSpecs["v0"][2].GetFloat() };
 			Vec3f v1{ shapeSpecs["v1"][0].GetFloat(), shapeSpecs["v1"][1].GetFloat(), shapeSpecs["v1"][2].GetFloat() };
 			Vec3f v2{ shapeSpecs["v2"][0].GetFloat(), shapeSpecs["v2"][1].GetFloat(), shapeSpecs["v2"][2].GetFloat() };
 			Vec3f v3{ shapeSpecs["v3"][0].GetFloat(), shapeSpecs["v3"][1].GetFloat(), shapeSpecs["v3"][2].GetFloat() };
-			return new Plane(v0, v1, v2, v3, Material::createMaterial((Value&)shapeSpecs["material"]));
+			auto ret =  std::make_shared<Plane>(v0, v1, v2, v3, Material::createMaterial((Value&)shapeSpecs["material"]));
+			if (shapeSpecs.HasMember("id")) {
+				ret->name = shapeSpecs["id"].GetString();
+				std::cout << ret->name << std::endl;
+			}
+			return ret;
+		} else if (shapeType.compare("model") == 0) {
+			// Construct the data object by reading from file
+			Vec3f center{ shapeSpecs["center"][0].GetFloat(), shapeSpecs["center"][1].GetFloat(), shapeSpecs["center"][2].GetFloat() };
+			auto ret =  std::make_shared<TriMesh>(shapeSpecs["modelPath"].GetString(), center, shapeSpecs["scale"].GetFloat(), Material::createMaterial((Value&)shapeSpecs["material"]));
+			if (shapeSpecs.HasMember("id")) {
+				ret->name = shapeSpecs["id"].GetString();
+				std::cout << ret->name << std::endl;
+			}
+			return ret;
 		}
 
 		return 0;
 
 	}
+
+		const bool Shape::IntersectsBounds(Ray& ray) const {
+			float hit1, hit0;
+			return WorldBound.IntersectP(ray, &hit0, &hit1);
+		}
 
 
 

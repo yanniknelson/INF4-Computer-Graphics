@@ -43,7 +43,9 @@ void Scene::createScene(Value& scenespecs){
 		}
 	}
 
+	VolumeRoot = BVH::BuildTree(shapes);
 
+	std::cout << shapes.size() << " Built Tree " << VolumeRoot->numOfShapes << std::endl;
 }
 
 

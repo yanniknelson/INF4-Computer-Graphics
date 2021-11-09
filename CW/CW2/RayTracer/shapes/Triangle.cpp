@@ -73,11 +73,26 @@ namespace rt{
 		float b0 = e0 / det;
 		float b1 = e1 / det;
 		float b2 = e2 / det;
+
 		h.tValue = tScaled / det;
 		h.valid = true;
 		h.object = this;
 		h.point = ray(h.tValue);
-		h.normal = (v0 - h.point).crossProduct(v1 - h.point).normalized();
+
+		if (hasNormals) {
+			h.normal = (b0*n0 + b1*n1 + b2*n2)/3.f;
+		} else {
+			h.normal = (v0 - h.point).crossProduct(v1 - h.point).normalized();
+		}
+
+		if (hasTextureMaps) {
+			Vec2f UV = (b0*t0 + b1*t1 + b2*t2);
+			h.u = UV.x;
+			h.v = UV.y;
+			//std::cout << UV << std::endl;
+		}
+
+
 		return h;
 
 	}

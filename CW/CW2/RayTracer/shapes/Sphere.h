@@ -25,6 +25,16 @@ public:
 		ObjectToWorld = Transform::Translate(center);
 		WorldToObject = ObjectToWorld.Inverse();
 		material = mat;
+
+		centroid = center;
+
+		ObjectBound = Bounds3f(Vec3f(-radius), Vec3f(radius));
+		WorldBound = ObjectToWorld.TransformBounds3(ObjectBound);
+
+		std::cout << ObjectBound.pMin << " " << ObjectBound.pMax << std::endl;
+		std::cout << WorldBound.pMin << " " << WorldBound.pMax << std::endl;
+
+		name = "sphere";
 	};
 
 	virtual ~Sphere();

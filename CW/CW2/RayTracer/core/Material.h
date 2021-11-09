@@ -29,7 +29,9 @@ public:
 
 	static Material* createMaterial(Value& materialSpecs);
 
-	virtual Vec3f GetShading(Hit h, void* scene, Vec3f eye, int bounce) const = 0;
+	virtual Vec3f GetShading(Hit h, void* scene, Vec3f eye, int bounce, bool print) const = 0;
+
+	virtual Vec3f GetDiffuse() const  = 0;
 
 private:
 	

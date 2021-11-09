@@ -1,0 +1,10 @@
+^C:\USERS\YANNIKNELSON\DOCUMENTS\GITHUB\INF4-COMPUTER-GRAPHICS\CW\CW2\RAYTRACER\BUILD\CMAKEFILES\EEE118DAFB8EF9173388D80A058860FE\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/YannikNelson/Documents/GitHub/INF4-Computer-Graphics/CW/CW2/RayTracer -BC:/Users/YannikNelson/Documents/GitHub/INF4-Computer-Graphics/CW/CW2/RayTracer/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/YannikNelson/Documents/GitHub/INF4-Computer-Graphics/CW/CW2/RayTracer/build/Ray Tracer.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
