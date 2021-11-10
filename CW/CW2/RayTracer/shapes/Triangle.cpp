@@ -80,7 +80,7 @@ namespace rt{
 		h.point = ray(h.tValue);
 
 		if (hasNormals) {
-			h.normal = (b0*n0 + b1*n1 + b2*n2)/3.f;
+			h.normal = (b0*n0 + b1*n1 + b2*n2);
 		} else {
 			h.normal = (v0 - h.point).crossProduct(v1 - h.point).normalized();
 		}

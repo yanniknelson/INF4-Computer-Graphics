@@ -28,7 +28,7 @@ public:
 	int tHeight;
 	Vec3f* texture;
 
-	Vec3f GetShading(Hit h, void* scene, Vec3f eye, int bounce, bool print) const;
+	Vec3f GetShading(Hit h, void* scene, Vec3f eye, int bounce) const;
 
 	Vec3f GetDiffuse() const {
 		return Diffuse;

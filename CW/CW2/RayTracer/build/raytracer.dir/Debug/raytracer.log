@@ -1,4 +1,11 @@
-﻿  RayTracer.cpp
+﻿  ThinLens.cpp
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\math/Transform.h(139,28): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Camera.h(35,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Camera.h(37,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Camera.h(53,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Camera.h(53,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\cameras\ThinLens.cpp(20,18): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  RayTracer.cpp
 C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\math/Transform.h(139,28): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Camera.h(35,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Camera.h(37,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
@@ -7,35 +14,46 @@ C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\c
 C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\shapes/BVH.h(44,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Scene.h(33,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Scene.h(37,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core\RayTracer.cpp(12,52): warning C4305: 'argument': truncation from 'double' to 'T'
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core\RayTracer.cpp(12,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core\RayTracer.cpp(55,52): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core\RayTracer.cpp(67,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core\RayTracer.cpp(78,52): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core\RayTracer.cpp(55,36): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core\RayTracer.cpp(78,36): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+  AreaLight.cpp
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\math/Transform.h(139,28): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\shapes/BVH.h(44,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\lights\AreaLight.h(25,18): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Scene.h(33,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Scene.h(37,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\lights\AreaLight.cpp(24,33): warning C4244: 'argument': conversion from 'double' to 'const T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core\RayTracer.cpp(220,56): warning C4305: 'argument': truncation from 'double' to 'T'
-          with
-          [
-              T=float
-          ]
-C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core\RayTracer.cpp(220,81): warning C4305: 'argument': truncation from 'double' to 'T'
-          with
-          [
-              T=float
-          ]
-C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core\RayTracer.cpp(220,106): warning C4305: 'argument': truncation from 'double' to 'T'
-          with
-          [
-              T=float
-          ]
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\lights\AreaLight.cpp(42,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\lights\AreaLight.cpp(43,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  main.cpp
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\math/Transform.h(139,28): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Camera.h(35,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Camera.h(37,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Camera.h(53,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Camera.h(53,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\shapes/BVH.h(44,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Scene.h(33,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Scene.h(37,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\parsers/PPMWriter.h(35,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\main\main.cpp(66): message : see reference to function template instantiation 'void PPMWriter::PPMWriter<float>(const int,const int,Vec3<float> *,const char *)' being compiled
+  BlinnPhong.cpp
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\math\Transform.h(139,28): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\shapes/BVH.h(44,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Scene.h(33,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core/Scene.h(37,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\core\Scene.h(50): warning C4715: 'rt::Scene::getLight': not all control paths return a value
   raytracer.vcxproj -> C:\Users\YannikNelson\Documents\GitHub\INF4-Computer-Graphics\CW\CW2\RayTracer\build\Debug\raytracer.exe

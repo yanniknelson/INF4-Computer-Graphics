@@ -25,6 +25,7 @@ int main(int argc, char* argv[]){
 	//parse commandline arguments
 	char* inputFile=argv[1];    //first command line argument holds the path to the json input file
 	char* outputFile=argv[2];   //second command line argument holds the path to the output image file
+	int samples = atoi(argv[3]); //get the number of samples
 	int resolution = 0;
 
 	std::printf("Input file: %s\n",inputFile);
@@ -48,7 +49,7 @@ int main(int argc, char* argv[]){
 	//
 	// Main function, render scene
 	//
-	Vec3f* pixelbuffer=RayTracer::render(camera, scene, d["nbounces"].GetInt());
+	Vec3f* pixelbuffer=RayTracer::render(camera, scene, d["nbounces"].GetInt(), samples);
 
 	int camWidth = camera->getWidth();
 	int camHeight = camera->getHeight();

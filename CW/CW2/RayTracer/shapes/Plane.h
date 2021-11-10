@@ -39,6 +39,10 @@ public:
 
 	Hit intersect(Ray ray);
 
+	Vec3f GetBasis(bool axis) {
+		return (axis) ? (v1 - v0) : (v3 - v0);
+	}
+
 private: 
 	Triangle t1;
 	Triangle t2;

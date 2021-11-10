@@ -8,6 +8,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LocalDebuggerWorkingDirectory>../examples</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>example.json testout.ppm</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>example.json testout.ppm 4900</LocalDebuggerCommandArguments>
   </PropertyGroup>
 </Project>

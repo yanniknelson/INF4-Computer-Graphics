@@ -22,8 +22,6 @@ public:
 	ThinLens():Camera(){};
 	ThinLens(int width, int height, int fov, float lensRadius, float focalDistance, Vec3f pos, Vec3f up, Vec3f lookAt);
 
-	Vec2f sampleLens();
-
 	//
 	//Destructor
 	//

@@ -1,0 +1,8 @@
+@echo off 
+setlocal enabledelayedexpansion
+for /l %%x in (1, 1, 44) do (
+	set /a var= "B=%%x"
+	set /a var*=!var!
+	START /wait /b raytracer.exe example.json output-%%x.ppm !var!
+	
+	)

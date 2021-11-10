@@ -34,21 +34,13 @@ namespace rt{
 		Vec3f pFilm = Vec3f(sample.pFilm.x, sample.pFilm.y, 0);
 		Vec3f pCamera = RasterToCamera.TransformPoint(pFilm);
 		*ray = Ray(Vec3f{}, pCamera.normalized());
-		Vec2f pLens = lensRadius * sampleLens();
+		Vec2f pLens = lensRadius * sample.pLens;
 		float ft = focalDistance / ray->d.z;
 		Vec3f pFocus = (*ray)(ft);
 		ray->o = Vec3f(pLens.x, pLens.y, 0.f);
 		ray->d = (pFocus - ray->o).normalize();
 		*ray = CameraToWorld.TransformRay(*ray);
 		return 1;
-	}
-
-	Vec2f ThinLens::sampleLens() {
-		Vec2f ret{1.f,1.f};
-		while (ret.length() > 1.f) {
-			ret = Vec2f((float)std::rand() / RAND_MAX, (float)std::rand() / RAND_MAX);
-		}
-		return ret;
 	}
 
 } //namespace rt

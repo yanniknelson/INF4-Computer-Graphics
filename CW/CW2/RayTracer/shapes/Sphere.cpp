@@ -40,12 +40,14 @@ namespace rt{
 		}
 
 		h.tValue = t0;
+		h.t1 = t1;
 
-		if (t0 <= 0) {
+		if (t0 <= 1e-4) {
 			if (t1 > ray.tMax) {
 				return h;
 			}
 			h.tValue = t1;
+			h.t1 = t0;
 			//std::cout << "t0 ";
 		} 
 
@@ -63,8 +65,6 @@ namespace rt{
 		h.u = phi / (2 * M_PI);
 		float theta = acos(Transform::Clamp((h.point.z/radius), -1.f, 1.f));
 		h.v = theta / M_PI;
-
-		//std::cout << h.point << " " << ObjectToWorld.TransformPoint(h.point) << " " << ray(h.tValue) << " " << h.tValue << " " << t0 << " " << t1 << std::endl;
 
 		//transform the hit point and normal into world space
 		h.point  = ObjectToWorld.TransformPoint(h.point);

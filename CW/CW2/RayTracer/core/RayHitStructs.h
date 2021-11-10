@@ -38,12 +38,15 @@ struct Hit{
 
 	bool valid = false;
 	float tValue = std::numeric_limits<float>::max();
+	float t1 = std::numeric_limits<float>::max();
 	Vec3f normal;
 	float medium = 1.f;
 	bool interior = false;
 
 	//void pointer due to circular includes
 	void* object;
+
+	void* TrimeshTri = nullptr;
 	
 	float u;
 	float v;

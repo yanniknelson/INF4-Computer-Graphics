@@ -15,7 +15,7 @@ namespace rt{
 		
 		Vec3f L = (position - hit.point).normalize();
 		Ray lightRay = { hit.point, L };
-		Hit shadowhit = ((Scene*)scene)->VolumeRoot->IntersectShadow(lightRay, hit.object);
+		Hit shadowhit = ((Scene*)scene)->VolumeRoot->Intersect(lightRay);
 		if (shadowhit.valid) {
 			return 0.f;
 		}

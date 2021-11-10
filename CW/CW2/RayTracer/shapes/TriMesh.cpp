@@ -11,7 +11,7 @@
 namespace rt{
 
 	TriMesh::TriMesh(std::string path, Vec3f position, float scale,Material* mat) {
-
+		scale = scale;
 		name = "Trimesh";
 	
 		std::cout << "Building TriMesh" << std::endl;
@@ -112,8 +112,16 @@ namespace rt{
 				ret = t;
 			}
 		}*/
+		
+		ret.TrimeshTri = this;
 
-		ret.object = this;
+		ret.tValue *= scale;
+
+		if (ret.valid && (ret.TrimeshTri) == (ret.object)) {
+			std::cout << "hit: " << ((Shape*)(ret.object))->name << std::endl;
+			std::cout << "Tri: " << ((Shape*)(ret.TrimeshTri))->name << std::endl;
+			std::cout << "problem " << ((Shape*)(ret.TrimeshTri))->name << " " << ((Shape*)(ret.object))->name << " " << name << std::endl;
+		}
 		ret.point = ObjectToWorld.TransformPoint(ret.point);
 
 		return ret;

@@ -25,6 +25,8 @@ public:
 
 	std::vector<std::shared_ptr<Shape>> faces;
 	BVH::Node* VolumeRoot;
+
+	float scale = 1.f;
 };
 
 

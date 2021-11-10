@@ -5,11 +5,11 @@
  */
 #include "BVH.h"
 
+#include "shapes/TriMesh.h"
 
 
 
 namespace rt{
-
 
 	BVH::Node* BVH::BuildTree(std::vector<std::shared_ptr<Shape>> shapes) {
 

@@ -48,7 +48,7 @@ namespace rt{
 	}
 
 
-	Vec3f BlinnPhong::GetShading(Hit h, void * scene, Vec3f eye, int bounce, bool print) const {
+	Vec3f BlinnPhong::GetShading(Hit h, void * scene, Vec3f eye, int bounce) const {
 		//if (h.interior) std::cout << "interiror" << std::endl;
 		int numLights = ((Scene*)scene)->GetNumLights();
 		Vec3f BP{};
@@ -67,19 +67,30 @@ namespace rt{
 			float LdotN = Transform::Clamp(L.dotProduct(h.normal), 0.f, 1.f);
 			Vec3f diff = LdotN * kd;
 
-			
-
-			BP = BP + (diff + spec) * light->SampleLight(h, scene);
+			if (tPath.length() > 0) {
+				int index = ((int)(h.v * (tHeight - 1)) * tWidth) + (int)(h.u * tWidth);
+				Vec3f textureSample = texture[index];
+				BP = textureSample * (diff + spec) * light->SampleLight(h, scene);
+				//std::cout << Vec3f(h.u * tWidth, h.v * tHeight, 0) << std::endl;
+				//return { h.u, h.v, 0 };
+			}
+			else {
+				BP = Diffuse * (diff + spec) * light->SampleLight(h, scene);
+			}
 		
 			
 			if (bounce > 0 && kr != 0) {
 				Vec3f reflec = ((Scene*)scene)->backgroundColour;
 				Vec3f R = (2 * (L.dotProduct(h.normal)) * h.normal - L).normalized();
 				Ray reflectionRay = { h.point, R };
-				Hit t = ((Scene*)scene)->VolumeRoot->IntersectReflect(reflectionRay, h.object);
+				Hit t = ((Scene*)scene)->VolumeRoot->Intersect(reflectionRay);
 
 				if (t.valid) {
-					reflec = ((Shape*)t.object)->getMaterial()->GetShading(t, scene, eye, bounce - 1, print);
+					Shape* s = ((Shape*)t.object);
+					if (s->name.compare("face") == 0) {
+						s = ((Shape*)t.TrimeshTri);
+					}
+					reflec = s->getMaterial()->GetShading(t, scene, h.point, bounce - 1);
 				}
 				BP = BP + kr * reflec;
 			}
@@ -87,35 +98,42 @@ namespace rt{
 			//if (h.interior) std::cout << "interirorbefore" << std::endl;
 			
 
-			if (refractiveIndex > 0) {
-				//if (h.interior) std::cout << "interirorafter" << std::endl;
-				Vec3f refracComp = ((Scene*)scene)->backgroundColour;
-				float n = (h.interior)? refractiveIndex/ 1.f : 1.f / refractiveIndex;
-				//if (h.interior) std::cout << "interiror" << std::endl;
-				float ncosthetai = h.normal.dotProduct(-V);
-				float sine = 1 - (n * n * (1 - ncosthetai * ncosthetai));
-				Vec3f refrac = (n * ncosthetai - sqrt(sine)) * h.normal - n * (-V);
-				//std::cout << -V << " " << refrac << std::endl;
+			if (refractiveIndex > 0 && bounce > 0) {
+				Vec3f refracComp = ((Scene*) scene) ->backgroundColour;
+
+				float n = 1.f / refractiveIndex;
+				float ncosthetain = h.normal.dotProduct(-V);
+				float sine = 1 - (n * n * (1 - ncosthetain * ncosthetain));
+				if (sine < 0) { break; }
+				Vec3f refrac = (n * ncosthetain - sqrt(sine)) * h.normal - n * (-V);
+
 				Ray refractionRay = { h.point, refrac };
 				refractionRay.medium = refractiveIndex;
-				Hit t = ((Scene*)scene)->VolumeRoot->IntersectRefraction(refractionRay);
+
+				Hit out = ((Shape*)h.object)->intersect(refractionRay);
+
+				n = refractiveIndex / 1.f;
+				ncosthetain = (-out.normal).dotProduct(-refrac);
+				sine = 1 - (n * n * (1 - ncosthetain * ncosthetain));
+				if (sine < 0) { break; }
+				refrac = (n * ncosthetain - sqrt(sine)) * (-out.normal) - n * (-refrac);
+				refractionRay = { out.point, refrac };
+
+				Hit t = ((Scene*)scene)->VolumeRoot->IntersectLeaveOut(refractionRay, h);
 				if (t.valid) {
-					refracComp = ((Shape*)t.object)->getMaterial()->GetShading(t, scene, eye, bounce - 1, print);
+					Shape* s = ((Shape*)t.object);
+					if (s->name.compare("face") == 0) {
+						s = ((Shape*)t.TrimeshTri);
+					}
+					t.interior = !h.interior;
+					refracComp = s->getMaterial()->GetShading(t, scene, h.point, bounce - 1);
 				}
 				BP = BP + (1-kr) * refracComp;
 			}
 
 		}
-
-		if (tPath.length() > 0) {
-			int index = ((int)(h.v * (tHeight - 1)) * tWidth) + (int)(h.u * tWidth);
-			Vec3f textureSample = texture[index];
-			return textureSample * BP;
-			//std::cout << Vec3f(h.u * tWidth, h.v * tHeight, 0) << std::endl;
-			//return { h.u, h.v, 0 };
-		}
 		
-		return  Diffuse * BP;
+		return  BP;
 
 	}
 
