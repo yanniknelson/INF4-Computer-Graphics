@@ -3,8 +3,9 @@
  *
  */
 #include "RayTracer.h"
+#include "lights/AreaLight.h"
 
-#define CAMERAJITTERING
+//#define CAMERAJITTERING
 
 
 namespace rt {
@@ -60,6 +61,16 @@ namespace rt {
 
 		if (camera->thinLens) {
 			NumOfSamples = nsamples;
+		}
+
+
+
+		int numLights = scene->GetNumLights();
+		for (int i = 0; i < numLights; i++) {
+			LightSource* l = scene->getLight(i);
+			if (l->name.compare("arealight") == 0) {
+				((AreaLight*)l)->setSamples(nsamples);
+			}
 		}
 
 		int barWidth = 70;

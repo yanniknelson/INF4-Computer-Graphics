@@ -21,6 +21,8 @@ public:
 	Vec3f is;
 	Vec3f id;
 
+	std::string name = "light";
+
 	LightSource(Vec3f position = {}, Vec3f is = {}, Vec3f id = {}) : position(position), is(is), id(id) {};
 
 	static LightSource* createLightSource(Value& lightSpecs);

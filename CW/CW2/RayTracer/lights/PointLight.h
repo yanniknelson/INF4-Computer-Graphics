@@ -16,7 +16,7 @@ class PointLight: public LightSource{
 
 public:
 	PointLight();
-	PointLight(Vec3f position = {}, Vec3f is = {}, Vec3f id = {}):LightSource(position, is, id){}
+	PointLight(Vec3f position = {}, Vec3f is = {}, Vec3f id = {}) :LightSource(position, is, id) { name = "pointlight"; }
 
 	Vec3f SampleLight(Hit hit, void * scene);
 

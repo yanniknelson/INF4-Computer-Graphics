@@ -5,7 +5,7 @@ reference = np.array(Image.open("reference.ppm"))
 width, height, pixels = reference.shape
 
 errors = []
-for example in range(1, 43):
+for example in range(1, 45):
     experiment = np.array(Image.open("output-"+str(example)+".ppm"))
     sum = 0
     diff = (reference-experiment)/255

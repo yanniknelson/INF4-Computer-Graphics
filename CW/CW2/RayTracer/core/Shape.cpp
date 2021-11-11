@@ -8,6 +8,8 @@
 #include "shapes/Plane.h"
 #include "shapes/TriMesh.h"
 
+#include <memory>
+
 
 namespace rt{
 

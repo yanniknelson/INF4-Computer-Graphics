@@ -84,14 +84,14 @@ public:
     }
 
     inline bool IntersectP(const rt::Ray& ray, const Vec3f& invDir, const int dirIsNeg[3]) const {
-        const Bounds3f& bounds = *this;
+        const Bounds3& bounds = *this;
         float tMin = (bounds[dirIsNeg[0]].x - ray.o.x) * invDir.x;
         float tMax = (bounds[1-dirIsNeg[0]].x - ray.o.x) * invDir.x;
         float tyMin = (bounds[dirIsNeg[1]].y - ray.o.y) * invDir.y;
         float tyMax = (bounds[1-dirIsNeg[1]].y - ray.o.y) * invDir.y;
         if (tMin > tyMax || tyMin > tMax) return false;
         if (tyMin > tMin) tMin = tyMin;
-        if (tyMax < tmax) tMax = tyMax;
+        if (tyMax < tMax) tMax = tyMax;
 
         float tzMin = (bounds[dirIsNeg[2]].z - ray.o.z) * invDir.z;
         float tzMax = (bounds[1-dirIsNeg[2]].z - ray.o.z) * invDir.z;

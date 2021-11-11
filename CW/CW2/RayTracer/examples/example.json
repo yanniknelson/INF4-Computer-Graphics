@@ -1,11 +1,9 @@
 {
 "nbounces":0,
 "camera":{
-    "type":"thinlens",
+    "type":"pinhole",
     "width":800,
     "height":800,
-	"focalDistance": 6.2,
-	"lensRadius": 0.4,
     "fov":35,
     "position": [0.0, -3.5, 2.0],
     "lookat": [0.0, 1.0, -0.1],
@@ -14,17 +12,16 @@
 "scene":{
     "backgroundcolor":[0.01, 0.01, 0.01],
     "lightsources": [
-	{
-		"type": "pointlight",
+    {
+        "type": "arealight",
 		"is": [100.0, 100.0, 100.0],
         "id": [100.0, 100.0, 100.0],
-		"position": [0.0, 1.0, 1.5],
 		"shape": {
 			"type": "plane",
-			"v0": [-0.2, 1.0, 1.5],
-			"v1": [-0.2, 1.0, 2.0],
-			"v2": [0.2, 1.0, 2.0],
-			"v3": [0.2, 1.0, 1.5],
+			"v0": [-0.2, 4.0, 1.5],
+			"v1": [-0.2, 4.0, 2.0],
+			"v2": [0.2, 4.0, 2.0],
+			"v3": [0.2, 4.0, 1.5],
 			"material": {
 				"ks": 0.6,
 				"kd": 1.0,
@@ -32,21 +29,33 @@
 				"diffusecolor": [1.0, 0.2, 0.2]
 			}
 		}
-	}
+    }
     ],
     "shapes":[
     {
-        "type":"sphere",
-        "center": [0.0, 2.7, 0.15],
-        "radius":0.5,
+        "type":"plane",
+		"v0": [-0.7, 3.2, 0.0],
+		"v1": [-0.7, 3.2, 0.6],
+		"v2": [0.7, 3.2, 0.6],
+		"v3": [0.7, 3.2, 0.0],
         "material":{
             "ks":0.4,
             "kd":0.8,
             "specularexponent":3,
-            "diffusecolor":[0.4, 0.3, 0.4],
-            "tPath": "../textures/sky-map.jpg",
-            "tWidth": 852,
-            "tHeight": 480
+            "diffusecolor":[0.4, 0.3, 0.4]
+        }
+    },
+	{
+        "type":"plane",
+		"v0": [-0.7, 3.2, 0.6],
+		"v1": [0.7, 3.2, 0.6],
+		"v2": [0.7, 2.0, 0.6],
+		"v3": [-0.7, 2.0, 0.6],
+        "material":{
+            "ks":0.4,
+            "kd":0.8,
+            "specularexponent":3,
+            "diffusecolor":[0.4, 0.3, 0.4]
         }
     },
     {

@@ -10,7 +10,7 @@
 #define NUM_OF_SAMPLES 100
 #define ROOT_SAMPLES sqrt(NUM_OF_SAMPLES)
 
-#define LIGHTJITTERING
+//#define LIGHTJITTERING
 
 
 
@@ -24,10 +24,15 @@ namespace rt {
 		return (is / (4 * M_PI * dist * dist)) * shadowContribution;
 	}
 
+	void AreaLight::setSamples(int nsamples) {
+		numofsamples = nsamples;
+		rootsamples = sqrt(numofsamples);
+	}
+
 	float AreaLight::Obstruction(Hit hit, void* scene) {
 		float hits = 0;
 #ifndef LIGHTJITTERING
-		for (int i = 0; i < NUM_OF_SAMPLES; i++) {
+		for (int i = 0; i < numofsamples; i++) {
 			Vec3f pointOnLight = ((float)std::rand() / RAND_MAX) * basis1length * basis1 + ((float)std::rand() / RAND_MAX) * basis2length * basis2 + lowestCorner;
 			Vec3f L = (pointOnLight - hit.point).normalize();
 			Ray lightRay = { hit.point, L };
@@ -39,11 +44,12 @@ namespace rt {
 #endif // !LIGHTJITTERING
 
 #ifdef LIGHTJITTERING
-		float b1 = basis1length / ROOT_SAMPLES;
-		float b2 = basis2length / ROOT_SAMPLES;
-		for (int i = 0; i < ROOT_SAMPLES; i++) {
-			for (int j = 0; j < ROOT_SAMPLES; j++) {
+		float b1 = basis1length / (float)rootsamples;
+		float b2 = basis2length / (float)rootsamples;
+		for (int i = 0; i < rootsamples; i++) {
+			for (int j = 0; j < rootsamples; j++) {
 				Vec3f section = i*b1*basis1 + j*b2*basis2 + lowestCorner;
+				//std::cout << section;
 				Vec3f pointOnLight = ((float)std::rand() / RAND_MAX) * b1 * basis1 + ((float)std::rand() / RAND_MAX) * b2 * basis2 + section;
 				Vec3f L = (pointOnLight - hit.point).normalize();
 				Ray lightRay = { hit.point, L };
@@ -52,12 +58,13 @@ namespace rt {
 					hits += 1.f;
 				}
 			}
+			//std::cout << " ";
 		}
 #endif // LIGHTJITTERING
 
 
 		
-		return hits / (float)NUM_OF_SAMPLES;
+		return hits / (float)numofsamples;
 	}
 
 

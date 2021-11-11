@@ -191,7 +191,7 @@ public:
     Vec3 normalized() const
     {
         T n = norm();
-        Vec3f ret{};
+        Vec3<T> ret{};
         if (n > 0) {
             T factor = 1 / sqrt(n);
             ret.x = x * factor, ret.y = y * factor, ret.z = z * factor;

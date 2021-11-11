@@ -35,6 +35,8 @@ public:
 		basis2length = basis2.length();
 		basis2.normalize();
 
+		name = "arealight";
+
 		std::cout << "area light " << lowestCorner << " " << diag << std::endl;
 	};
 
@@ -50,6 +52,11 @@ public:
 	Vec3f lowestCorner = {};
 
 	float Obstruction(Hit hit, void* scene);
+
+	void setSamples(int nsamples);
+
+	int numofsamples;
+	int rootsamples;
 
 };
 
