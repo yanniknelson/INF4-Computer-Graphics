@@ -1,0 +1,8 @@
+Please note that to change the number of samples taken you can add a 3rd arguemnt,
+though this value must be square if jittering is enabled
+
+Additionally, in order to switch between jittered and not jittered, there are 
+'#ifdef's in the raytracer.cpp and arealight.cpp files that enable or disable
+jittering for the the thin lens and arealight respectively. To switch you will
+need to comment or uncomment these and recompile. Jittering is enabled in the 
+code you have been provided.

@@ -1,0 +1,205 @@
+{
+"nbounces":3,
+"camera":{
+    "type":"pinhole",
+    "width":800,
+    "height":800,
+    "fov":35,
+    "position": [-1, -2.5, 2.0],
+    "lookat": [0.176, 0.968, -0.176],
+    "up": [0.0, 0.0, 0.5]
+},
+"scene":{
+    "backgroundcolor":[0.01, 0.01, 0.01],
+    "lightsources": [
+    {
+        "type": "arealight",
+        "position": [0.0, 3.0, 1.5],
+        "is": [50.0, 50.0, 50.0],
+        "id": [50.0, 50.0, 50.0],
+		"shape": {
+			"type": "plane",
+			"v0": [-0.5, 2.5, 1.5],
+			"v1": [0.5, 2.5, 1.5],
+			"v2": [0.5, 3.5, 1.5],
+			"v3": [-0.5, 3.5, 1.5],
+			"material": {
+				"ks": 0.6,
+				"kd": 1.0,
+				"specularexponent": 10,
+				"diffusecolor": [1.0, 0.2, 0.2]
+			}
+		}
+    }
+    ],
+    "shapes":[
+    {
+        "id": "floor",
+        "type": "plane",
+        "v3": [-2.0, 0.0, 0.0],
+        "v0": [-2.0, 8.0, 0.0],
+        "v1": [2.0, 8.0, 0.0],
+        "v2": [2.0, 0.0, 0.0],
+        "material": {
+            "ks": 0.6,
+            "kd": 0.7,
+            "kr": 0.3,
+            "specularexponent": 10,
+            "diffusecolor": [1.0, 1.0, 1.0],
+            "tPath": "../textures/Fractal.png",
+            "tWidth": 800,
+            "tHeight": 800
+        }
+    },
+	{
+        "id": "back wall",
+        "type": "plane",
+        "v1": [-2.0, 8.0, 0.0],
+        "v2": [-2.0, 8.0, 5.0],
+        "v3": [2.0, 8.0, 5.0],
+        "v0": [2.0, 8.0, 0.0],
+        "material":{
+            "ks": 0.6,
+            "kd": 0.7,
+            "kr": 0.3,
+            "specularexponent": 10,
+            "diffusecolor": [1.0, 1.0, 1.0]
+        }
+    },
+	{	
+		"type":"model",
+		"center": [-1.0, 4.0, 0.0],
+		"modelPath": "../models/clock_ply.ply",
+		"scale": 0.2,
+		"material": {
+            "ks": 0.6,
+            "kd": 1.0,
+            "specularexponent": 10,
+            "diffusecolor": [0.4, 0.7, 0.5],
+			"tPath": "../textures/base.png",
+            "tWidth": 2048,
+            "tHeight": 2048
+        }
+	},
+	{	
+		"type":"model",
+		"center": [1.0, 4.0, 0.4],
+		"modelPath": "../models/LP_Generator.ply",
+		"scale": 0.01,
+		"material": {
+            "ks": 0.6,
+            "kd": 1.0,
+            "specularexponent": 10,
+            "diffusecolor": [0.4, 0.7, 0.5],
+			"tPath": "../textures/default_baseColor.png",
+            "tWidth": 4096,
+            "tHeight": 4096
+        }
+	},
+	{
+        "type":"sphere",
+        "center": [0.0, 2, 0.5],
+        "radius":0.3,
+        "material":{
+            "ks":0.4,
+            "kd":0.8,
+			"refractiveIndex": 1.54,
+            "specularexponent":3,
+            "diffusecolor":[0.0, 0.0, 0.0]
+        }
+    },
+	{
+        "type":"sphere",
+        "center": [0.0, 5.0, 2.0],
+        "radius":0.5,
+        "material":{
+            "ks":0.4,
+            "kd":0.8,
+            "specularexponent":3,
+            "diffusecolor":[0.0, 0.0, 0.0],
+			"tPath": "../textures/Checkerboard.png",
+            "tWidth": 800,
+            "tHeight": 800
+        }
+    },
+	{	
+		"type":"model",
+		"center": [0.0, 0.0, 0.0],
+		"scale": 1.0,
+		"faces": [
+		{
+			"id": "face",
+			"type": "triangle",
+			"v2": [0.6, 2.7, 0.0],
+			"v0": [0.0, 3.0, 0.6],
+			"v1": [-0.6, 2.7, 0.0],
+			"n0": [0.0, -0.72, 0.36],
+			"n1": [0.0, -0.72, 0.36],
+			"n2": [0.0, -0.72, 0.36],
+			"material": {
+				"ks": 0.6,
+				"kd": 1.0,
+				"specularexponent": 10,
+				"diffusecolor": [1.0, 0.2, 0.2]
+			}
+		},
+		{
+			"id": "face",
+			"type": "triangle",
+			"v0": [-0.6, 3.3, 0.0],
+			"v1": [0.0, 3.0, 0.6],
+			"v2": [-0.6, 2.7, 0.0],
+			"n0": [-0.36, 0.0, 0.36],
+			"n1": [-0.36, 0.0, 0.36],
+			"n2": [-0.36, 0.0, 0.36],
+			"material": {
+				"ks": 0.6,
+				"kd": 1.0,
+				"specularexponent": 10,
+				"diffusecolor": [1.0, 0.2, 0.2]
+			}
+		}
+		,
+		{
+			"id": "face",
+			"type": "triangle",
+			"v0": [0.6, 3.3, 0.0],
+			"v1": [0.0, 3.0, 0.6],
+			"v2": [0.6, 2.7, 0.0],
+			"n0": [0.36, 0.0, 0.36],
+			"n1": [0.36, 0.0, 0.36],
+			"n2": [0.36, 0.0, 0.36],
+			"material": {
+				"ks": 0.6,
+				"kd": 1.0,
+				"specularexponent": 10,
+				"diffusecolor": [1.0, 0.2, 0.2]
+			}
+		},
+		{
+			"id": "face",
+			"type": "triangle",
+			"v1": [0.6, 3.3, 0.0],
+			"v2": [0.0, 3.0, 0.6],
+			"v0": [-0.6, 3.3, 0.0],
+			"n0": [0.0, 0.72, 0.36],
+			"n1": [0.0, 0.72, 0.36],
+			"n2": [0.0, 0.72, 0.36],
+			"material": {
+				"ks": 0.6,
+				"kd": 1.0,
+				"specularexponent": 10,
+				"diffusecolor": [1.0, 0.2, 0.2]
+			}
+		}
+		],
+		"material": {
+            "ks": 0.6,
+            "kd": 1.0,
+            "specularexponent": 10,
+            "diffusecolor": [0.4, 0.7, 0.5]
+        }
+	}
+    ]
+}
+}
